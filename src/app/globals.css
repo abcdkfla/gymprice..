@@ -1,0 +1,47 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --tag: #ffd400;
+  --ink: #17181c;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+}
+
+/* 시그니처: 가격표 스티커 — 왼쪽에 태그 구멍이 뚫린 형광 프라이스택 */
+.price-sticker {
+  @apply relative inline-flex items-center gap-1 bg-tag text-tagInk font-bold rounded-r-md rounded-l-sm px-2.5 py-1 text-sm shadow-chip;
+  clip-path: polygon(8px 0, 100% 0, 100% 100%, 8px 100%, 0 50%);
+  padding-left: 16px;
+}
+.price-sticker::before {
+  content: "";
+  @apply absolute rounded-full bg-paper;
+  width: 5px;
+  height: 5px;
+  left: 7px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.focusable:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
